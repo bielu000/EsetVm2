@@ -1,4 +1,4 @@
-.dataSize 0
+.dataSize_ 0
 .code
 
 consoleRead r8

@@ -1,4 +1,4 @@
-.dataSize 20000
+.dataSize_ 20000
 .data
 00 # temp byte
 

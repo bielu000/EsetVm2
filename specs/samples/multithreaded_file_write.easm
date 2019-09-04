@@ -1,4 +1,4 @@
-.dataSize 16000
+.dataSize_ 16000
 .code
 
 loadConst 0, r0

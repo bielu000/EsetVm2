@@ -1,4 +1,4 @@
-.dataSize 8
+.dataSize_ 8
 .code
 
 	loadConst 100, r15 # lockIndex

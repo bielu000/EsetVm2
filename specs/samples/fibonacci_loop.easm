@@ -1,4 +1,4 @@
-.dataSize 0
+.dataSize_ 0
 .code
 
 loadConst 0, r1 # first

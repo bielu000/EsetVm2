@@ -1,4 +1,4 @@
-.dataSize 8
+.dataSize_ 8
 .code
 
 createThread threadProc, r0

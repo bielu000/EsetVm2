@@ -1,4 +1,4 @@
-.dataSize 10000
+.dataSize_ 10000
 .code
 
 sub r14, r14, r14 # stack init
