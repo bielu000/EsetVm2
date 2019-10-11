@@ -8,9 +8,10 @@ add_subdirectory(src)
 
 set(SOURCES
         src/main.cpp
+        src/Evm.cpp
 )
 
-set(INCLUDE_DIR src)
+set(INCLUDE_DIR inc)
 
 
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES})

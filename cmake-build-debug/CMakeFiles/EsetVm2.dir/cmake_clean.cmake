@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/EsetVm2.dir/src/main.cpp.o"
+  "CMakeFiles/EsetVm2.dir/src/Evm.cpp.o"
   "EsetVm2.pdb"
   "EsetVm2"
 )

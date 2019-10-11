@@ -44,7 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/pp/Projects/EsetVm2/src"/>
+					<Add directory="/home/pp/Projects/EsetVm2/inc"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -68,7 +68,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/pp/Projects/EsetVm2/src"/>
+					<Add directory="/home/pp/Projects/EsetVm2/inc"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -86,6 +86,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/pp/Projects/EsetVm2/src/Evm.cpp">
+			<Option target="EsetVm2"/>
+		</Unit>
 		<Unit filename="/home/pp/Projects/EsetVm2/src/main.cpp">
 			<Option target="EsetVm2"/>
 		</Unit>

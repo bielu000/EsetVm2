@@ -6,7 +6,11 @@
 
 #IncludeRegexTransform: 
 
-../src/EvmHeader.hpp
+../inc/Evm.hpp
+string
+-
+
+../inc/EvmExecutable.hpp
 array
 -
 exception
@@ -15,8 +19,14 @@ fstream
 -
 iostream
 -
+filesystem
+-
 
-/home/pp/Projects/EsetVm2/src/main.cpp
-EvmHeader.hpp
+/home/pp/Projects/EsetVm2/src/Evm.cpp
+Evm.hpp
+-
+EvmExecutable.hpp
+-
+spdlog/spdlog.h
 -
 

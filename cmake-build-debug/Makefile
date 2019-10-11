@@ -123,6 +123,33 @@ EsetVm2/fast:
 	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/build
 .PHONY : EsetVm2/fast
 
+src/Evm.o: src/Evm.cpp.o
+
+.PHONY : src/Evm.o
+
+# target to build an object file
+src/Evm.cpp.o:
+	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/Evm.cpp.o
+.PHONY : src/Evm.cpp.o
+
+src/Evm.i: src/Evm.cpp.i
+
+.PHONY : src/Evm.i
+
+# target to preprocess a source file
+src/Evm.cpp.i:
+	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/Evm.cpp.i
+.PHONY : src/Evm.cpp.i
+
+src/Evm.s: src/Evm.cpp.s
+
+.PHONY : src/Evm.s
+
+# target to generate assembly for a file
+src/Evm.cpp.s:
+	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/Evm.cpp.s
+.PHONY : src/Evm.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... EsetVm2"
+	@echo "... src/Evm.o"
+	@echo "... src/Evm.i"
+	@echo "... src/Evm.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

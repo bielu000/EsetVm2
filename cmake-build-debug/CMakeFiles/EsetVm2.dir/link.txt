@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/EsetVm2.dir/src/main.cpp.o  -o EsetVm2 
+/usr/bin/c++  -g   CMakeFiles/EsetVm2.dir/src/main.cpp.o CMakeFiles/EsetVm2.dir/src/Evm.cpp.o  -o EsetVm2 

@@ -4,13 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/pp/Projects/EsetVm2/src/Evm.cpp" "/home/pp/Projects/EsetVm2/cmake-build-debug/CMakeFiles/EsetVm2.dir/src/Evm.cpp.o"
   "/home/pp/Projects/EsetVm2/src/main.cpp" "/home/pp/Projects/EsetVm2/cmake-build-debug/CMakeFiles/EsetVm2.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../src"
+  "../inc"
   )
 
 # Targets to which this target links.
