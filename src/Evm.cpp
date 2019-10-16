@@ -9,7 +9,30 @@
 using namespace esetvm2::core;
 using namespace esetvm2::file_format;
 
+class ProcessMemory
+{
 
+};
+
+class Loader
+{
+public:
+  void fill(ProcessMemory& mem, EvmExecutable& exe)
+  {
+  }
+};
+
+class Memory
+{
+public:
+  using ValueType = std::vector<uint32_t>;
+
+
+
+
+private:
+  ValueType data_;
+};
 
 void Evm::run(const std::string& exePath)
 {
@@ -19,11 +42,16 @@ void Evm::run(const std::string& exePath)
 
   try {
     auto evmExecutable = EvmExecutable{exePath};
-    loader->fill(memory.get(), evmExecutable);
+    evmExecutable.loadSections();
 
-    while(auto instruction = decoder->fetch(); ) {
-      cpu->process(instruction);
-    }
+
+    auto x = 10;
+
+//    loader->fill(memory.get(), evmExecutable);
+//
+//    while(auto instruction = decoder->fetch(); ) {
+//      cpu->process(instruction);
+//    }
 
   } catch (const std::exception& e) {
     spdlog::error("Critical error occurred: {}", e.what());

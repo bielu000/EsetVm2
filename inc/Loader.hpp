@@ -6,10 +6,9 @@
 
 namespace esetvm2::core {
   class Memory;
-  class EvmExecutable;
-
-  class Loader {
-  public:
-    void fill(&Memory, EvmExecutable&);
-  };
+//
+//  class Loader {
+//  public:
+//    void fill(&Memory, EvmExecutable&);
+//  };
 }
