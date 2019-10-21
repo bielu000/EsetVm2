@@ -44,11 +44,14 @@ void Evm::run(const std::string& exePath)
     auto evmExecutable = EvmExecutable{exePath};
     evmExecutable.loadSections();
 
+    loader->load(*memory, evmExecutable);
+
+    uint8_t d = 33;
+
+
 
     auto x = 10;
 
-//    loader->fill(memory.get(), evmExecutable);
-//
 //    while(auto instruction = decoder->fetch(); ) {
 //      cpu->process(instruction);
 //    }

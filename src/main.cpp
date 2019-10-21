@@ -11,13 +11,15 @@ int main()
 {
   const std::string exePath = "/home/pp/Projects/EsetVm2/specs/samples/precompiled/crc.evm";
 
-  auto evmExe = EvmExecutable{exePath};
-
-
-
-  evmExe.loadSections();
-
-//  auto vm = esetvm2::core::Evm{};
+  auto vm = esetvm2::core::Evm{};
 //  vm.run(exePath);
+
+  auto file = EvmExecutable{exePath};
+  file.loadSections();
+
+
+
+
+  return 10;
 }
 

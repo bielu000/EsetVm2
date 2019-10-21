@@ -4,11 +4,13 @@
 
 #pragma once
 
+#include <EvmExecutable.hpp>
+#include <Memory.hpp>
+
 namespace esetvm2::core {
-  class Memory;
-//
-//  class Loader {
-//  public:
-//    void fill(&Memory, EvmExecutable&);
-//  };
+  class Loader
+  {
+  public:
+    void load(Memory& memory, esetvm2::file_format::EvmExecutable& exe);
+  };
 }

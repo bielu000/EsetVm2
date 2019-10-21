@@ -5,7 +5,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(SOURCES
 	src/main.cpp
-        src/Evm.cpp
+	src/Evm.cpp
+	src/Loader.cpp
 )
 
 set(INCLUDE_DIR inc)

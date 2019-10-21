@@ -29,7 +29,6 @@ namespace esetvm2::file_format {
     EvmFileError errorCode_;
   };
 
-
   class EvmExecutable {
   public:
     struct Header
@@ -62,11 +61,10 @@ namespace esetvm2::file_format {
         }
 
       auto getType() const { return type_; }
-      auto begin() { return data_.begin(); }
-      auto end() { return data_.end(); }
+      iterator begin() { return data_.begin(); }
+      iterator end() { return data_.end(); }
       std::byte* data() { return data_.data(); }
 
-      auto setSize(size_t size) { size_ = size; }
       auto getSize() const { return size_; }
 
     private:
@@ -84,10 +82,12 @@ namespace esetvm2::file_format {
       fillHeader(path);
     }
 
-    const Section* const getSection(Section::Type type) const
+    const Header& getHeader() const { return header_; }
+
+    Section* const getSection(Section::Type type)
     {
       auto iter = std::find_if(sections_.begin(), sections_.end(),
-        [&](const auto& x){ return x.getType() == type; });
+        [&](auto& x){ return x.getType() == type; });
 
       if (iter == sections_.end()) {
         return nullptr;
