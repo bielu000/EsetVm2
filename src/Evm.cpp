@@ -37,7 +37,7 @@ private:
 void Evm::run(const std::string& exePath)
 {
   auto loader =   std::make_unique<Loader>();
-  auto cpu =      std::make_unique<Cpu>();
+//  auto cpu =      std::make_unique<Cpu>();
   auto memory =   std::make_unique<Memory>();
 
   try {
@@ -45,16 +45,6 @@ void Evm::run(const std::string& exePath)
     evmExecutable.loadSections();
 
     loader->load(*memory, evmExecutable);
-
-    uint8_t d = 33;
-
-
-
-    auto x = 10;
-
-//    while(auto instruction = decoder->fetch(); ) {
-//      cpu->process(instruction);
-//    }
 
   } catch (const std::exception& e) {
     spdlog::error("Critical error occurred: {}", e.what());

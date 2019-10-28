@@ -7,16 +7,15 @@
 #include <array>
 
 namespace esetvm2::core {
-  class Instruction {};
 
-  class Cpu {
-  public:
-    void process(const Instruction& instruction)
-    {
-
-    }
-
-  private:
-    std::array<int64_t, 16> registers_;
-  };
+//  class Cpu {
+//  public:
+//    void process(const Instruction& instruction)
+//    {
+//
+//    }
+//
+//  private:
+//    std::array<int64_t, 16> registers_;
+//  };
 }

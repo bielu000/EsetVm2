@@ -157,7 +157,7 @@ namespace esetvm2::file_format {
 
   private:
     Header header_{};
-    std::list<Section> sections_;
+    std::vector<Section> sections_;
     uintmax_t fileSize_{};
     std::string path_;
   };

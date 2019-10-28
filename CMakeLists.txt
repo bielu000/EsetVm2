@@ -7,6 +7,7 @@ set(SOURCES
 	src/main.cpp
 	src/Evm.cpp
 	src/Loader.cpp
+	src/Decoder.cpp
 )
 
 set(INCLUDE_DIR inc)
