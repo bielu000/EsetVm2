@@ -65,21 +65,8 @@ namespace esetvm2::core {
 
     void loadAtLeastBits(uint8_t bits)
     {
-      /*
-       * 1)
-       * bits_left   = 32
-       * mem_offset  = 0
-       *
-       * 2) stream.get<2>()
-       * bits_left   = 30
-       * mem_offset  = 0
-       *
-       * 3) stream.get<32>()
-       *
-       *
-       */
 
-      uint8_t bitsToLoad = static_cast<uint8_t >(std::abs(bitsLeft - bits));
+      auto bitsToLoad = static_cast<uint8_t >(std::abs(bitsLeft - bits));
 
       spdlog::info("Bits left: {0}, bits to load: {1}", bitsLeft, bitsToLoad);
 
@@ -92,24 +79,19 @@ namespace esetvm2::core {
       }
 
       auto x = mem_->read<uint8_t>(memOffset_);
-      data_ |= (x >> 6);
+      memOffset_ += sizeof(uint8_t);
+      data_ |= (x >> 6); // 6 = 8bit - bitsToLoad (2) 
 
       sync = [this, x, bitsToLoad]() {
         auto d = static_cast<uint8_t>(x << bitsToLoad);
-        bitsLeft = static_cast<uint8_t>(8 - bitsToLoad);
-        data_ |= (d << (32 - bitsLeft - bitsToLoad));
+        bitsLeft = static_cast<uint8_t>(std::numeric_limits<uint8_t>::digits - bitsToLoad);
+        data_ |= (d << (std::numeric_limits<value_type>::digits - bitsLeft - bitsToLoad));
       };
     };
 
     template<uint8_t T>
     auto get()
     {
-//      if (data_ == 0) {
-////        auto x = mem_->read<uint32_t>(memOffset_);
-////        data_ = htobe32(x);
-////        memOffset_ = 4;
-//      }
-
       if ((bitsLeft - T) < 0) {
         loadAtLeastBits(T);
       }
@@ -120,8 +102,8 @@ namespace esetvm2::core {
 
       bitsLeft -= T;
 
-      if constexpr (T <= 8) {
-        auto ret = static_cast<uint8_t>(data_ >> (32 - T));
+      if constexpr (T <= std::numeric_limits<uint8_t>::digits) {
+        auto ret = static_cast<uint8_t>(data_ >> (std::numeric_limits<value_type>::digits - T));
         data_ = data_ << T;
 
         sync();
@@ -129,8 +111,8 @@ namespace esetvm2::core {
         return ret;
 
       }
-      else if constexpr (T <= 16) {
-        auto ret = static_cast<uint16_t>(data_ >> (32 - T));
+      else if constexpr (T <= std::numeric_limits<uint16_t>::digits) {
+        auto ret = static_cast<uint16_t>(data_ >> (std::numeric_limits<value_type>::digits - T));
         data_ = data_ << T;
 
         sync();
@@ -138,8 +120,8 @@ namespace esetvm2::core {
         return ret;
 
       }
-      else if constexpr (T <= 32) {
-        auto ret = static_cast<uint32_t>(data_ >> (32 - T));
+      else if constexpr (T <= std::numeric_limits<uint32_t>::digits) {
+        auto ret = static_cast<uint32_t>(data_ >> (std::numeric_limits<value_type>::digits - T));
         data_ = data_ << (T - 1);
         data_ = data_ << 1;
 
@@ -150,7 +132,6 @@ namespace esetvm2::core {
     }
     uint8_t bitsLeft { 0 };
     value_type data_{ 0 };
-    value_type mask_{ 0xffffffff };
     uint16_t memOffset_{ 0 };
     Memory const * mem_;
   };
