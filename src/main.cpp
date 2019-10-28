@@ -28,7 +28,7 @@ int main()
   std::copy(codeSection->begin(), codeSection->end(), memory.begin());
 
   std::array<std::byte, 10> arr {
-    (std::byte)0xbf, (std::byte)0xff, (std::byte)0xff, (std::byte)0xff, (std::byte)0x3f, (std::byte)0x27
+    (std::byte)0xbf, (std::byte)0xff, (std::byte)0xff, (std::byte)0xff, (std::byte)0x7f, (std::byte)0x7f
   };
 
   std::copy(arr.begin(), arr.end(), memory.begin());
@@ -39,10 +39,10 @@ int main()
   assert(x1 == 0x02);
 
   auto x2 = stream.get<32>();
-  assert(x2 == 0xFFFFFFFC);
+  assert(x2 == 0xFFFFFFFD);
 
-  auto x3 = stream.get<8>();
-  assert(x3 == 0x27);
+  auto x3 = stream.get<6>();
+  assert(x3 == 0x3f);
 
 
 //  auto decoder = esetvm2::core::Decoder{memory};
