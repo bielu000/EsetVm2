@@ -63,6 +63,37 @@ namespace esetvm2::core {
 
     std::function<void()> sync = [](){};
 
+    void loadByte(uint8_t bitsToLoad)
+    {
+      spdlog::trace("Loading by 8 bits long, bits to load: {0}", bitsToLoad);
+
+      auto x = mem_->read<uint8_t>(memOffset_);
+      memOffset_ += sizeof(uint8_t);
+      data_ |= (x >> (std::numeric_limits<uint8_t>::digits - bitsToLoad)); // 6 = 8bit - bitsToLoad (2)
+
+      sync = [this, x, bitsToLoad]() {
+        auto d = static_cast<uint8_t>(x << bitsToLoad);
+        bitsLeft = static_cast<uint8_t>(std::numeric_limits<uint8_t>::digits - bitsToLoad);
+        data_ |= (d << (std::numeric_limits<value_type>::digits - bitsLeft - bitsToLoad));
+      };
+    };
+
+    void loadWord(uint8_t bitsToLoad)
+    {
+      spdlog::trace("Loading by 16 bits long, bits to load: {0}", bitsToLoad);
+
+      auto x = htobe16(mem_->read<uint16_t>(memOffset_));
+      memOffset_ += sizeof(uint16_t);
+      data_ |= (x >> (std::numeric_limits<uint16_t>::digits - bitsToLoad)); // 6 = 8bit - bitsToLoad (2)
+
+      sync = [this, x, bitsToLoad]() {
+        auto d = static_cast<uint16_t>(x << bitsToLoad);
+        bitsLeft = static_cast<uint8_t>(std::numeric_limits<uint8_t>::digits - bitsToLoad);
+        data_ |= (d << (std::numeric_limits<value_type>::digits - bitsLeft - bitsToLoad));
+      };
+    }
+
+
     void loadAtLeastBits(uint8_t bits)
     {
 
@@ -78,9 +109,11 @@ namespace esetvm2::core {
         mask |= 1;
       }
 
+
+      //Woks just for 8 bits!!!!!
       auto x = mem_->read<uint8_t>(memOffset_);
       memOffset_ += sizeof(uint8_t);
-      data_ |= (x >> 6); // 6 = 8bit - bitsToLoad (2) 
+      data_ |= (x >> 6); // 6 = 8bit - bitsToLoad (2)
 
       sync = [this, x, bitsToLoad]() {
         auto d = static_cast<uint8_t>(x << bitsToLoad);
@@ -89,15 +122,24 @@ namespace esetvm2::core {
       };
     };
 
+    void loadBits(uint8_t bitsToLoad)
+    {
+
+      if (bitsToLoad <= 8) {
+        loadByte(bitsToLoad);
+      }
+      else if (bitsToLoad <= 16) {
+        loadWord(bitsToLoad);
+      }
+    }
+
     template<uint8_t T>
     auto get()
     {
       if ((bitsLeft - T) < 0) {
-        loadAtLeastBits(T);
-      }
+        auto bitsToLoad = static_cast<uint8_t >(std::abs(bitsLeft - T));
+        loadBits(bitsToLoad);
 
-      if ((bitsLeft - T) < 0) {
-        throw std::runtime_error("Not enough bits to fetch");
       }
 
       bitsLeft -= T;
