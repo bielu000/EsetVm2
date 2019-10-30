@@ -39,7 +39,7 @@ void test_16_bit()
   memory.alloc(32);
 
   std::array<std::byte, 10> arr {
-    (std::byte)0xbf, (std::byte)0xff, (std::byte)0x80, (std::byte)0x80, (std::byte)0x7f, (std::byte)0x7f
+    (std::byte)0xbf, (std::byte)0xff, (std::byte)0x80, (std::byte)0xff, (std::byte)0x7f, (std::byte)0xde
   };
 
   std::copy(arr.begin(), arr.end(), memory.begin());
@@ -47,10 +47,13 @@ void test_16_bit()
   auto stream = esetvm2::core::MemBitStream{&memory};
 
   auto x1 = stream.get<14>();
-  assert(x1 == 0x5fff);
+  assert(x1 == 0x2fff);
 
   auto x2 = stream.get<32>();
-  assert(x2 == 0xFFFFFFFD);
+  assert(x2 == 0xe03fdff7);
+
+  auto x3 = stream.get<2>();
+  assert(x3 == 2);
 //
 //  auto x3 = stream.get<6>();
 //  assert(x3 == 0x3f);
@@ -73,7 +76,7 @@ int main()
 
   std::copy(codeSection->begin(), codeSection->end(), memory.begin());
 
-  test_8_bit();
+//  test_8_bit();
   test_16_bit();
 
 

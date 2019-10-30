@@ -88,7 +88,7 @@ namespace esetvm2::core {
 
       sync = [this, x, bitsToLoad]() {
         auto d = static_cast<uint16_t>(x << bitsToLoad);
-        bitsLeft = static_cast<uint8_t>(std::numeric_limits<uint8_t>::digits - bitsToLoad);
+        bitsLeft = static_cast<uint8_t>(std::numeric_limits<uint16_t>::digits - bitsToLoad);
         data_ |= (d << (std::numeric_limits<value_type>::digits - bitsLeft - bitsToLoad));
       };
     }
@@ -124,6 +124,7 @@ namespace esetvm2::core {
 
     void loadBits(uint8_t bitsToLoad)
     {
+      bitsLeft += bitsToLoad;
 
       if (bitsToLoad <= 8) {
         loadByte(bitsToLoad);
