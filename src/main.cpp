@@ -76,12 +76,19 @@ int main()
 
   std::copy(codeSection->begin(), codeSection->end(), memory.begin());
 
-//  test_8_bit();
+  test_8_bit();
   test_16_bit();
 
 
 //  auto decoder = esetvm2::core::Decoder{memory};
 //  auto instr = decoder.decode(0);
+  std::stringstream ss;
+
+  for (std::size_t i = 0; i < 10; i++) {
+    ss << std::to_string(i) << " ";
+  }
+
+
 
 
   return 0;

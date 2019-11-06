@@ -5,7 +5,7 @@
 		<Option title="EsetVm2"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\src\;CMake Files\tests\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/pp/Projects/EsetVm2/build/Release"/>
@@ -37,38 +37,24 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="EsetVm2">
-				<Option output="/home/pp/Projects/EsetVm2/build/Release/EsetVm2" prefix_auto="0" extension_auto="0"/>
+			<Target title="test">
 				<Option working_dir="/home/pp/Projects/EsetVm2/build/Release"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/pp/Projects/EsetVm2/inc"/>
-					<Add directory="/usr/include/c++/9"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
-					<Add directory="/usr/include/c++/9/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
+				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/Makefile&quot;  VERBOSE=1 EsetVm2"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/Makefile&quot;  VERBOSE=1 test"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="EsetVm2/fast">
-				<Option output="/home/pp/Projects/EsetVm2/build/Release/EsetVm2" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/pp/Projects/EsetVm2/build/Release"/>
+			<Target title="Evm">
+				<Option output="/home/pp/Projects/EsetVm2/build/Release/lib/libEvm.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pp/Projects/EsetVm2/build/Release/src"/>
 				<Option object_output="./"/>
-				<Option type="1"/>
+				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/pp/Projects/EsetVm2/inc"/>
+					<Add directory="/home/pp/Projects/EsetVm2/src/../inc"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -79,27 +65,157 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/Makefile&quot;  VERBOSE=1 EsetVm2/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 Evm"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Evm/fast">
+				<Option output="/home/pp/Projects/EsetVm2/build/Release/lib/libEvm.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pp/Projects/EsetVm2/build/Release/src"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/pp/Projects/EsetVm2/src/../inc"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 Evm/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="EsetVm2">
+				<Option output="/home/pp/Projects/EsetVm2/build/Release/bin/EsetVm2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pp/Projects/EsetVm2/build/Release/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/pp/Projects/EsetVm2/src/../inc"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 EsetVm2"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="EsetVm2/fast">
+				<Option output="/home/pp/Projects/EsetVm2/build/Release/bin/EsetVm2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pp/Projects/EsetVm2/build/Release/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/pp/Projects/EsetVm2/src/../inc"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 EsetVm2/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="EvmTestSuite">
+				<Option output="/home/pp/Projects/EsetVm2/build/Release/bin/EvmTestSuite" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pp/Projects/EsetVm2/build/Release/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/tests/Makefile&quot;  VERBOSE=1 EvmTestSuite"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/tests/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="EvmTestSuite/fast">
+				<Option output="/home/pp/Projects/EsetVm2/build/Release/bin/EvmTestSuite" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pp/Projects/EsetVm2/build/Release/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/tests/Makefile&quot;  VERBOSE=1 EvmTestSuite/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/pp/Projects/EsetVm2/build/Release/tests/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
 		<Unit filename="/home/pp/Projects/EsetVm2/src/Decoder.cpp">
-			<Option target="EsetVm2"/>
+			<Option target="Evm"/>
 		</Unit>
 		<Unit filename="/home/pp/Projects/EsetVm2/src/Evm.cpp">
-			<Option target="EsetVm2"/>
+			<Option target="Evm"/>
+		</Unit>
+		<Unit filename="/home/pp/Projects/EsetVm2/src/Instruction.cpp">
+			<Option target="Evm"/>
 		</Unit>
 		<Unit filename="/home/pp/Projects/EsetVm2/src/Loader.cpp">
-			<Option target="EsetVm2"/>
+			<Option target="Evm"/>
 		</Unit>
 		<Unit filename="/home/pp/Projects/EsetVm2/src/main.cpp">
 			<Option target="EsetVm2"/>
 		</Unit>
+		<Unit filename="/home/pp/Projects/EsetVm2/tests/src/MemBitStreamTest.cpp">
+			<Option target="EvmTestSuite"/>
+		</Unit>
 		<Unit filename="/home/pp/Projects/EsetVm2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/pp/Projects/EsetVm2/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="/home/pp/Projects/EsetVm2/tests/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\tests\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

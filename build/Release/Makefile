@@ -78,6 +78,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/opt/jetbrains/apps/CLion/ch-0/182.5107.21/bin/cmake/linux/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pp/Projects/EsetVm2/build/Release/CMakeFiles /home/pp/Projects/EsetVm2/build/Release/CMakeFiles/progress.marks
@@ -111,6 +122,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named Evm
+
+# Build rule for target.
+Evm: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Evm
+.PHONY : Evm
+
+# fast build rule for target.
+Evm/fast:
+	$(MAKE) -f src/CMakeFiles/Evm.dir/build.make src/CMakeFiles/Evm.dir/build
+.PHONY : Evm/fast
+
+#=============================================================================
 # Target rules for targets named EsetVm2
 
 # Build rule for target.
@@ -120,116 +144,21 @@ EsetVm2: cmake_check_build_system
 
 # fast build rule for target.
 EsetVm2/fast:
-	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/build
+	$(MAKE) -f src/CMakeFiles/EsetVm2.dir/build.make src/CMakeFiles/EsetVm2.dir/build
 .PHONY : EsetVm2/fast
 
-src/Decoder.o: src/Decoder.cpp.o
+#=============================================================================
+# Target rules for targets named EvmTestSuite
 
-.PHONY : src/Decoder.o
+# Build rule for target.
+EvmTestSuite: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 EvmTestSuite
+.PHONY : EvmTestSuite
 
-# target to build an object file
-src/Decoder.cpp.o:
-	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/Decoder.cpp.o
-.PHONY : src/Decoder.cpp.o
-
-src/Decoder.i: src/Decoder.cpp.i
-
-.PHONY : src/Decoder.i
-
-# target to preprocess a source file
-src/Decoder.cpp.i:
-	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/Decoder.cpp.i
-.PHONY : src/Decoder.cpp.i
-
-src/Decoder.s: src/Decoder.cpp.s
-
-.PHONY : src/Decoder.s
-
-# target to generate assembly for a file
-src/Decoder.cpp.s:
-	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/Decoder.cpp.s
-.PHONY : src/Decoder.cpp.s
-
-src/Evm.o: src/Evm.cpp.o
-
-.PHONY : src/Evm.o
-
-# target to build an object file
-src/Evm.cpp.o:
-	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/Evm.cpp.o
-.PHONY : src/Evm.cpp.o
-
-src/Evm.i: src/Evm.cpp.i
-
-.PHONY : src/Evm.i
-
-# target to preprocess a source file
-src/Evm.cpp.i:
-	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/Evm.cpp.i
-.PHONY : src/Evm.cpp.i
-
-src/Evm.s: src/Evm.cpp.s
-
-.PHONY : src/Evm.s
-
-# target to generate assembly for a file
-src/Evm.cpp.s:
-	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/Evm.cpp.s
-.PHONY : src/Evm.cpp.s
-
-src/Loader.o: src/Loader.cpp.o
-
-.PHONY : src/Loader.o
-
-# target to build an object file
-src/Loader.cpp.o:
-	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/Loader.cpp.o
-.PHONY : src/Loader.cpp.o
-
-src/Loader.i: src/Loader.cpp.i
-
-.PHONY : src/Loader.i
-
-# target to preprocess a source file
-src/Loader.cpp.i:
-	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/Loader.cpp.i
-.PHONY : src/Loader.cpp.i
-
-src/Loader.s: src/Loader.cpp.s
-
-.PHONY : src/Loader.s
-
-# target to generate assembly for a file
-src/Loader.cpp.s:
-	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/Loader.cpp.s
-.PHONY : src/Loader.cpp.s
-
-src/main.o: src/main.cpp.o
-
-.PHONY : src/main.o
-
-# target to build an object file
-src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
-
-src/main.i: src/main.cpp.i
-
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
-
-src/main.s: src/main.cpp.s
-
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/EsetVm2.dir/build.make CMakeFiles/EsetVm2.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+# fast build rule for target.
+EvmTestSuite/fast:
+	$(MAKE) -f tests/CMakeFiles/EvmTestSuite.dir/build.make tests/CMakeFiles/EvmTestSuite.dir/build
+.PHONY : EvmTestSuite/fast
 
 # Help Target
 help:
@@ -239,19 +168,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... test"
+	@echo "... Evm"
 	@echo "... EsetVm2"
-	@echo "... src/Decoder.o"
-	@echo "... src/Decoder.i"
-	@echo "... src/Decoder.s"
-	@echo "... src/Evm.o"
-	@echo "... src/Evm.i"
-	@echo "... src/Evm.s"
-	@echo "... src/Loader.o"
-	@echo "... src/Loader.i"
-	@echo "... src/Loader.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... EvmTestSuite"
 .PHONY : help
 
 
