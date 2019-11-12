@@ -3,12 +3,19 @@
 //
 
 #include <gtest/gtest.h>
+#include <Memory.hpp>
+#include <array>
+
+using namespace esetvm2::core;
 
 class MemBitStreamTestFixture : public ::testing::Test
 {
 protected:
-  virtual void SetUp() override
-  {}
+  void SetUp() override
+  {
+  }
+
+protected:
 
 };
 
