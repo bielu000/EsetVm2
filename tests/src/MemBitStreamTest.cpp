@@ -13,6 +13,7 @@ class MemBitStreamTestFixture : public ::testing::Test
 protected:
   void SetUp() override
   {
+
   }
 
 protected:

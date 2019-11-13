@@ -163,6 +163,33 @@ src/MemBitStreamTest.cpp.s:
 	cd /home/pp/Projects/EsetVm2/build/Release && $(MAKE) -f tests/CMakeFiles/EvmTestSuite.dir/build.make tests/CMakeFiles/EvmTestSuite.dir/src/MemBitStreamTest.cpp.s
 .PHONY : src/MemBitStreamTest.cpp.s
 
+src/MemoryTest.o: src/MemoryTest.cpp.o
+
+.PHONY : src/MemoryTest.o
+
+# target to build an object file
+src/MemoryTest.cpp.o:
+	cd /home/pp/Projects/EsetVm2/build/Release && $(MAKE) -f tests/CMakeFiles/EvmTestSuite.dir/build.make tests/CMakeFiles/EvmTestSuite.dir/src/MemoryTest.cpp.o
+.PHONY : src/MemoryTest.cpp.o
+
+src/MemoryTest.i: src/MemoryTest.cpp.i
+
+.PHONY : src/MemoryTest.i
+
+# target to preprocess a source file
+src/MemoryTest.cpp.i:
+	cd /home/pp/Projects/EsetVm2/build/Release && $(MAKE) -f tests/CMakeFiles/EvmTestSuite.dir/build.make tests/CMakeFiles/EvmTestSuite.dir/src/MemoryTest.cpp.i
+.PHONY : src/MemoryTest.cpp.i
+
+src/MemoryTest.s: src/MemoryTest.cpp.s
+
+.PHONY : src/MemoryTest.s
+
+# target to generate assembly for a file
+src/MemoryTest.cpp.s:
+	cd /home/pp/Projects/EsetVm2/build/Release && $(MAKE) -f tests/CMakeFiles/EvmTestSuite.dir/build.make tests/CMakeFiles/EvmTestSuite.dir/src/MemoryTest.cpp.s
+.PHONY : src/MemoryTest.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -176,6 +203,9 @@ help:
 	@echo "... src/MemBitStreamTest.o"
 	@echo "... src/MemBitStreamTest.i"
 	@echo "... src/MemBitStreamTest.s"
+	@echo "... src/MemoryTest.o"
+	@echo "... src/MemoryTest.i"
+	@echo "... src/MemoryTest.s"
 .PHONY : help
 
 

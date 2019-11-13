@@ -210,6 +210,9 @@
 		<Unit filename="/home/pp/Projects/EsetVm2/tests/src/MemBitStreamTest.cpp">
 			<Option target="EvmTestSuite"/>
 		</Unit>
+		<Unit filename="/home/pp/Projects/EsetVm2/tests/src/MemoryTest.cpp">
+			<Option target="EvmTestSuite"/>
+		</Unit>
 		<Unit filename="/home/pp/Projects/EsetVm2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

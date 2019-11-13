@@ -13,6 +13,20 @@
 #include <spdlog/spdlog.h>
 
 namespace esetvm2::core {
+  class MemoryError : public std::exception
+  {
+  public:
+    enum class ErrorCode { OffsetOutOfRange, MemoryNotAllocated };
+
+    explicit MemoryError(ErrorCode errorCode)
+    : errorCode_(errorCode) {}
+
+    ErrorCode getCode() { return errorCode_; }
+
+  private:
+    ErrorCode errorCode_;
+  };
+
   class Memory
   {
   public:
@@ -28,10 +42,18 @@ namespace esetvm2::core {
     template <typename T>
     auto read(uint16_t offset) const
     {
+      if (data_.empty()) {
+        throw MemoryError{MemoryError::ErrorCode::MemoryNotAllocated};
+      }
+
       T value {};
 
       auto readBegin = data_.begin() + offset;
       auto readEnd = data_.begin() + offset + sizeof(T);
+
+      if (readEnd > data_.end()) {
+        throw MemoryError{MemoryError::ErrorCode::OffsetOutOfRange};
+      };
 
       std::copy(readBegin, readEnd, reinterpret_cast<std::byte*>(&value));
 

@@ -4,3 +4,4 @@ cmake_install.cmake
 .ccls_cache
 .idea
 .idea/**
+build/**

@@ -17,16 +17,17 @@
 #include <list>
 
 namespace esetvm2::file_format {
-  enum class EvmFileError { FileNotFound, InvalidSignature, InvalidSize };
 
-  class InvalidEvmFile : public std::exception
+  class EvmFileError : public std::exception
   {
   public:
-    explicit InvalidEvmFile(EvmFileError errorCode)
+    enum class ErrorCode { FileNotFound, InvalidSignature, InvalidSize };
+
+    explicit EvmFileError(ErrorCode errorCode)
       : errorCode_(errorCode) {}
 
   private:
-    EvmFileError errorCode_;
+    ErrorCode errorCode_;
   };
 
   class EvmExecutable {
@@ -127,13 +128,13 @@ namespace esetvm2::file_format {
       std::ifstream file(path, std::ios_base::in | std::ios_base::binary);
 
       if (!file) {
-        throw InvalidEvmFile(EvmFileError::FileNotFound);
+        throw EvmFileError(EvmFileError::ErrorCode::FileNotFound);
       }
 
       file.read(header_.magic.data(), header_.magic.size());
 
       if (auto magic = std::string(header_.magic.begin(), header_.magic.end()); magic != "ESET-VM2") {
-        throw InvalidEvmFile(EvmFileError::InvalidSignature);
+        throw EvmFileError(EvmFileError::ErrorCode::InvalidSignature);
       }
 
       //Numbers within evm file are stored in little endian.
@@ -145,7 +146,7 @@ namespace esetvm2::file_format {
       fileSize_ = std::filesystem::file_size(path);
 
       if (!sizeIsValid()) {
-        throw InvalidEvmFile(EvmFileError::InvalidSize);
+        throw EvmFileError(EvmFileError::ErrorCode::InvalidSize);
       }
     }
 

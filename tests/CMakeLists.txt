@@ -1,5 +1,11 @@
 
-add_executable(EvmTestSuite src/MemBitStreamTest.cpp)
+set(TEST_FIXTURES_SRC
+    src/MemBitStreamTest.cpp
+    src/MemoryTest.cpp
+)
+
+
+add_executable(EvmTestSuite ${TEST_FIXTURES_SRC})
 
 include_directories(../inc)
 
