@@ -57,6 +57,7 @@ TEST_F(MemoryTestFixture, fetchingNotAllocatedMemoryCausesExceptionThrow)
 
   try {
     sut.read<uint8_t>(0);
+    FAIL();
   } catch (MemoryError& memoryError) {
     ASSERT_EQ(memoryError.getCode(), MemoryError::ErrorCode::MemoryNotAllocated);
   }

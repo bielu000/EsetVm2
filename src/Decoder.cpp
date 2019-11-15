@@ -67,7 +67,7 @@ namespace esetvm2::core {
     Instruction::opcode_length opLen = 0;
     uint8_t opcodeBitShift = 7;
 
-    auto stream = MemBitStream{&memory_};
+    auto stream = MemBitStream{&memory_, offset};
 
     do {
       opcode |= (stream.get<1>() << opcodeBitShift--);

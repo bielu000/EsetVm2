@@ -31,7 +31,7 @@ void Loader::load(esetvm2::core::Memory& memory, esetvm2::file_format::EvmExecut
   auto dataSection = exe.getSection(EvmExecutable::Section::Type::Data);
 
   if (!dataSection) {
-    spdlog::info("Data section is not present so it won't be compied into memory");
+    spdlog::info("Data section is not present so it won't be compied into memory_");
 
     return;
   }

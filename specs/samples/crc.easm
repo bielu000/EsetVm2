@@ -23,7 +23,7 @@ ae bc a9 c5 9e bb de 7f cf b2 47 e9 ff b5 30 1c f2 bd bd 8a c2 ba ca 30 93 b3 53
 
 .code
 
-# init stack (we need some memory for internal operations)
+# init stack (we need some memory_ for internal operations)
 loadConst 10000, r14
 
 # initial value

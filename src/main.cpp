@@ -80,7 +80,7 @@ int main()
   test_16_bit();
 
 
-//  auto decoder = esetvm2::core::Decoder{memory};
+//  auto decoder = esetvm2::core::Decoder{memory_};
 //  auto instr = decoder.decode(0);
   std::stringstream ss;
 

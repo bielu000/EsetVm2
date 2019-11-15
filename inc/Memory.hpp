@@ -72,16 +72,19 @@ namespace esetvm2::core {
   public:
     using value_type = std::uint32_t;
 
-    explicit MemBitStream(Memory const * mem)
-      : mem_(mem) {
-      auto x = mem_->read<uint32_t>(memOffset_);
+    MemBitStream(Memory const * memory, uint16_t offset)
+      : memory_(memory)
+    {
+      auto x = memory_->read<uint32_t>(memOffset_);
       data_ = htobe32(x);
-      memOffset_ = 4;
-      bitsLeft = 32;
+      memOffset_ = sizeof(data_);
+      bitsLeft = std::numeric_limits<decltype(data_)>::digits;
     }
 
-    MemBitStream(const MemBitStream& str) = delete;
-    MemBitStream& operator= (const MemBitStream& str) = delete;
+    MemBitStream(const MemBitStream& stream) = delete;
+    MemBitStream (MemBitStream&& stream) = default;
+    MemBitStream& operator= (const MemBitStream& stream) = delete;
+    MemBitStream& operator= (MemBitStream&& stream) = default;
 
     std::function<void()> sync = [](){};
 
@@ -89,10 +92,23 @@ namespace esetvm2::core {
     {
       spdlog::trace("Loading by 8 bits long, bits to load: {0}", bitsToLoad);
 
-      auto x = mem_->read<uint8_t>(memOffset_);
+      auto x = memory_->read<uint8_t>(memOffset_);
       memOffset_ += sizeof(uint8_t);
-      data_ |= (x >> (std::numeric_limits<uint8_t>::digits - bitsToLoad)); // 6 = 8bit - bitsToLoad (2)
 
+      //It is convenient to place the fetched amount of data to the same type
+      //as is ValueType, even if the fetched amount of data is only one byte size, although the ValueType is eg. 64bit
+      value_type dataToMerge = x;
+
+      //For a while skip bits that are not required.
+      //E.g. client request 6 bits, but 2 bits are available.
+      //One byte will be fetched, but we need only 4 bits from that byte, so that byte will be shifted to right
+      // by 4 bits (to be precise by bitsPerRequestedType - bitsToLoad)
+
+      dataToMerge >>= (std::numeric_limits<uint8_t>::digits - bitsToLoad);
+      dataToMerge <<= (std::numeric_limits<value_type>::digits - bitsLeft);
+      data_ |= dataToMerge;
+
+      //Sync returns bits that were lost during right shifting operation on dataToMerge
       sync = [this, x, bitsToLoad]() {
         auto d = static_cast<uint8_t>(x << bitsToLoad);
         bitsLeft = static_cast<uint8_t>(std::numeric_limits<uint8_t>::digits - bitsToLoad);
@@ -104,7 +120,7 @@ namespace esetvm2::core {
     {
       spdlog::trace("Loading by 16 bits long, bits to load: {0}", bitsToLoad);
 
-      auto x = htobe16(mem_->read<uint16_t>(memOffset_));
+      auto x = htobe16(memory_->read<uint16_t>(memOffset_));
       memOffset_ += sizeof(uint16_t);
       data_ |= (x >> (std::numeric_limits<uint16_t>::digits - bitsToLoad)); // 6 = 8bit - bitsToLoad (2)
 
@@ -133,7 +149,7 @@ namespace esetvm2::core {
 
 
       //Woks just for 8 bits!!!!!
-      auto x = mem_->read<uint8_t>(memOffset_);
+      auto x = memory_->read<uint8_t>(memOffset_);
       memOffset_ += sizeof(uint8_t);
       data_ |= (x >> 6); // 6 = 8bit - bitsToLoad (2)
 
@@ -198,6 +214,6 @@ namespace esetvm2::core {
     uint8_t bitsLeft { 0 };
     value_type data_{ 0 };
     uint16_t memOffset_{ 0 };
-    Memory const * mem_;
+    Memory const * memory_; //TODO: Maybe it can be reference
   };
 }
